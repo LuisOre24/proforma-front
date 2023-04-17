@@ -1,0 +1,125 @@
+
+<mat-card >
+  <form [formGroup]="form" #formProforma="ngForm" >
+    <mat-card-title>
+      GENERAR PROFORMA
+    </mat-card-title>
+    <mat-card-content>
+      <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="ID" required formControlName="idProforma">
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>DNI O RUC</mat-label>
+          <input  type="number" matInput formControlName="documento">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="mat-form-client">
+          <mat-label>CLIENTE</mat-label>
+          <input  matInput formControlName="cliente" required minlength="3">
+        </mat-form-field>
+      </div>
+      
+
+      <mat-form-field class="mat-form-product">
+        <mat-label>PRODUCTO</mat-label>
+        <input  type="text" placeholder="Seleccione un producto" aria-label="Producto" matInput
+          [formControl]="myControlProducto" formControlName="producto" [matAutocomplete]="auto">
+        <mat-autocomplete  #auto="matAutocomplete" [displayWith]="displayFn"
+          (optionSelected)="seleccionarProducto($event)">
+          <mat-option *ngFor="let option of filteredProducto | async" [value]="option">
+            {{option.producto}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <button class="button-add-product" mat-fab color="primary" type="button" (click)="agregar()" [disabled]="disabled">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <div>
+        <!--*ngIf="productoSeleccionado"-->
+        <table mat-table [dataSource]="dataProformaDetalle" class="mat-elevation-z8">
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef> ITEM </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="producto">
+            <th mat-header-cell *matHeaderCellDef> DESCRIPCION </th>
+            <td mat-cell *matCellDef="let element"> {{element.producto.producto}}</td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="cantidad">
+            <th mat-header-cell *matHeaderCellDef> CANTIDAD </th>
+            <td mat-cell *matCellDef="let element">
+              <input matInput type="number" value="{{element.cantidad}}"
+                (change)="actualizarCantidad(element.producto.idProducto, $event)" required min="1">
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef> PRECIO </th>
+            <td mat-cell *matCellDef="let element">S/ {{element.producto.precioBase}}.00 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="precioVenta">
+            <th mat-header-cell *matHeaderCellDef> PRECIO VENTA </th>
+            <td mat-cell *matCellDef="let element">
+              <input class="input-precio-venta" matInput type="number" value="{{element.precioVenta}}"
+                (change)="actualizarPrecio(element.producto.idProducto, $event)" required min="1">
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef> TOTAL </th>
+            <td mat-cell *matCellDef="let element">S/ {{element.calcularTotal()}} </td>
+
+          </ng-container>
+
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCION </th>
+            <td mat-cell *matCellDef="let element, let i=index">
+              <button mat-icon-button color="warn" (click)="removerProducto(i)">
+                <mat-icon>close</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+      </div>
+
+    </mat-card-content>
+
+    <mat-divider inset></mat-divider>
+
+    <mat-card-actions>
+      <p *ngIf="totalGeneral" class="totalGeneral">
+        Total General : S/ {{totalGeneral}}
+      </p>
+    </mat-card-actions>
+
+    <mat-card-footer>
+      <button mat-raised-button color="primary" style="float:right; margin: 2rem;" type="submit" (click)="aceptar()"
+        [disabled]="formProforma.invalid" id="guardar">GUARDAR</button>
+      <button mat-raised-button color="accent" style="float:right; margin: 2rem;" (click)="cancelar()">NUEVO</button>
+    </mat-card-footer>
+  </form>
+</mat-card>
+<!-- </div> -->

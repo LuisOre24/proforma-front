@@ -1,0 +1,63 @@
+/* Structure */
+*{
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+.content{
+  padding: 10px 5px auto 5px;
+}
+
+table {
+    width: 100%;
+  }
+  
+  mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /*class="mat-chip-color"*/
+
+  .mat-chip-active{
+    background-color: green;
+    width: 80px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+  }
+
+  .mat-chip-inactive{
+    background-color: red;
+    width: 80px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+  }
+
+  .button-add{
+    float: right;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+.mat-column-item{
+    width: 25%;
+  }
+  .mat-column-marca{
+    width: 25%;
+  }
+  .mat-column-estado{
+    width: 25%;
+  }
+  .mat-column-accion{
+    width: 25%;
+  }

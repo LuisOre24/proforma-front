@@ -1,0 +1,112 @@
+*{
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+.content-table{
+
+  padding-bottom: 30px;
+}
+
+  
+.mat-table {
+    width: 100%;
+}
+    
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.content-header{
+    margin: 20px 10px auto 10px;
+    display: flex;
+    justify-content: space-between
+}
+
+.title{
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.mat-column-id{
+    width: 10%;
+    text-align: center;
+}
+
+.mat-column-cliente{
+    width: 15%;
+    
+}
+
+
+
+table {
+    width: 100%;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+
+
+  @media (max-width: 480px){
+
+
+    .content-table{
+      width: 100%;
+      margin: auto 5px auto 5px;
+    }
+
+    table{
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .add-register{
+      font-size: 0.5rem;
+      margin-bottom: 10px;
+    }
+
+  }

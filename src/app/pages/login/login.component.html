@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AKJA</title>
+</head> -->
+<body>
+
+  <form [formGroup]="form" #formLogin="ngForm" (ngSubmit)="iniciarSesion()">
+    
+   <div class="content">
+    
+        <mat-card class="card-login">
+            <mat-card-title>INICIAR SESION</mat-card-title>
+            <mat-card-subtitle>System Solutions</mat-card-subtitle>
+
+            <mat-card-content>
+              
+                <mat-form-field appearance="fill">
+                    <mat-label>Ingrese su Usuario</mat-label>
+                    <input matInput placeholder="user" [(ngModel)]="usuario" required minlength="3" formControlName="usuario">
+                    <span matSuffix>
+                      <mat-icon>person</mat-icon>
+                    </span>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Ingrese su Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required minlength="3" formControlName="password">
+                    <span matSuffix (click)="hide = !hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </span>
+                  </mat-form-field>
+                
+            </mat-card-content>
+            
+            <mat-card-actions>
+              <button class="button" mat-button type="submit" [disabled]="formLogin.invalid" cdkFocusInitial>INICIAR SESION</button>
+            </mat-card-actions>
+          </mat-card>
+          <!-- [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" -->
+    </div>
+  </form>
+</body>
+<!-- </html> -->

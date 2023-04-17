@@ -1,0 +1,16 @@
+.detalle-cliente{
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.content-inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons{
+    float: right;
+    margin: auto 20px 20px auto;
+}

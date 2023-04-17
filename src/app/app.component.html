@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Advance</title>
+</head>
+
+<body>
+
+  <mat-toolbar color="primary" *ngIf="loginService.isLogged()">
+    <button mat-icon-button class="example-icon" (click)="sidenav.toggle()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>System Solutions</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="cerrarSesion()">
+        <mat-icon>dialpad</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container [ngClass]="loginService.isLogged() ? 'container-fix' : 'full-container'">
+    <mat-sidenav #sidenav>
+      <img class="logo" src="../assets/logo.jpeg" alt="">
+
+      <button mat-button (click)="sidenav.toggle()" [routerLink]="['/atencion']" class="button-span">
+        <span>Atencion</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button (click)="sidenav.toggle()" [routerLink]="['/proforma']" class="button-span">
+        <span>Generar Proforma</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button (click)="sidenav.toggle()" [routerLink]="['/proforma-data']" class="button-span">
+        <span>Registro de Proforma</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button (click)="sidenav.toggle()" [routerLink]="['/marca']" class="menu-button">
+        <span>Marca</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button (click)="sidenav.toggle()" [routerLink]="['/categoria']" class="button-span">
+        <span>Categoria</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button (click)="sidenav.toggle()" [routerLink]="['/producto']" class="button-span">
+        <span>Producto</span>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-sidenav>
+    <mat-sidenav-content [ngClass]="loginService.isLogged() ? 'container-logged' : 'container-login'">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+</body>
+
+</html>

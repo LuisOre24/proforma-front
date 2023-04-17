@@ -1,0 +1,85 @@
+mat-card{
+    padding: 20px;
+}
+
+mat-card-content{
+    margin-top: 5%;
+}
+mat-label{
+    font-weight: bold;
+}
+.proforma-encabezado{
+    display: flex;
+    flex-direction: column;
+}
+
+table{
+    margin-top: 5%;
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    
+    border-bottom: 0.5px solid grey;
+    border-top: 0.2px solid grey;
+    border-left: 0.2px solid grey;
+    border-right: 0.2px solid grey;
+}
+
+.table-header{
+    text-align: center;
+}
+.table-header-detalle{
+    text-align: left;
+}
+
+.row-item{
+    text-align: center;
+}
+
+.row-producto{
+    margin-left: 12px;
+}
+
+.row-cantidad{
+    text-align: center;
+}
+
+.row-precio-venta{
+    text-align: right;
+    margin-right: 2px;
+}
+
+.row-total{
+    text-align: right;
+    margin-right: 2px;
+}
+
+.total-detalle{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    font-size: larger;
+    font-weight: bold;
+}
+.actions{
+    float: right;
+    margin: 1%;
+}
+
+@media (max-width: 480px) {
+
+    mat-form-field{
+        height: 60px;
+    }
+
+    mat-label{
+        font-size: 12px;
+        
+    }
+    
+    .input-detail{
+        font-size: 12px;
+    }
+
+}

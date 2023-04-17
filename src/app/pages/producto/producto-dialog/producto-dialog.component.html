@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Producto</h1>
+
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Producto</mat-label>
+    <input matInput [(ngModel)]="producto.producto">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Categoria</mat-label>
+    <mat-select [compareWith]="compareCategoria" placeholder="Categoria" [(ngModel)]="producto.categoria">
+      <!-- <mat-option [value]="undefined">--Seleccione una categoria--</mat-option> -->
+      <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+        {{ categoria.categoria }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Marca</mat-label>
+    <mat-select [compareWith]="compareMarca" placeholder="Marca" [(ngModel)]="producto.marca">
+      <mat-option *ngFor="let marca of marcas" [value]="marca">
+        {{ marca.marca }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Precio Base</mat-label>
+    <input matInput type="number" [(ngModel)]="producto.precioBase" min="0">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Stock</mat-label>
+    <input matInput type="number" [(ngModel)]="producto.stock" min="1">
+  </mat-form-field>
+
+<!--   <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <input matInput [(ngModel)]="producto.estado">
+  </mat-form-field> -->
+
+  <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <mat-select [(ngModel)]="producto.estado" >
+      <mat-option [value]=0>Inactivo</mat-option>
+      <mat-option [value]=1>Activo</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="accent" (click)="cancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
+</div>

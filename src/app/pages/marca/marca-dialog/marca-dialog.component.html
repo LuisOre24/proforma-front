@@ -1,0 +1,24 @@
+
+<h1 mat-dialog-title>Marca</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Marca</mat-label>
+    <input matInput [(ngModel)]="marca.marca">
+  </mat-form-field>
+<!--   <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <input matInput [(ngModel)]="marca.estado">
+  </mat-form-field> -->
+
+  <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <mat-select [(ngModel)]="marca.estado" >
+      <mat-option [value]=0>Inactivo</mat-option>
+      <mat-option [value]=1>Activo</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
+</div>

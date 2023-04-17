@@ -1,0 +1,101 @@
+/* Structure */
+
+* {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+table {
+  width: 100%;
+
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.example-button-container {
+  float: right;
+  margin: 15px;
+
+}
+
+.mat-column-item {
+  width: 5%;
+}
+
+.mat-column-producto {
+  width: 20%;
+}
+
+.mat-column-categoria {
+  width: 15%;
+  text-align: center;
+}
+
+.mat-column-marca {
+  text-align: center;
+  width: 15%;
+}
+
+.mat-column-precioBase {
+  width: 10%;
+  text-align: center;
+}
+
+.mat-column-stock {
+  width: 5%;
+  text-align: center;
+}
+
+.mat-column-estado {
+  width: 15%;
+  text-align: center;
+}
+
+.mat-column-accion {
+  width: 15%;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+
+  table {
+    width: 100%;
+    padding: 5px;
+}
+
+  .mat-column-item {
+    display: none;
+  }
+
+  /* .mat-column-producto {
+    display: none;
+  } */
+
+  /* .mat-column-categoria {
+    display: none;
+  } */
+
+  /* .mat-column-marca {
+    display: none;
+  } */
+
+  /* .mat-column-precioBase {
+    display: none;
+  } */
+
+  /* .mat-column-stock {
+    display: none;
+  } */
+
+  .mat-column-estado {
+    display: none;
+  }
+
+  /* .mat-column-accion {
+    display: none;
+  } */
+}

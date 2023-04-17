@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Registro de Pago</h1>
+<div mat-dialog-content>
+
+
+  <div class="detalle-cliente">
+
+
+    <h3><strong>ID DE ATENCION: </strong> {{ atencion.idAtencion }}</h3>
+
+    <h3><strong>CLIENTE: </strong>{{ atencion.cliente.nombre }} {{atencion.cliente.apellido}} </h3>
+
+    
+
+  </div>
+
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>ID Atencion</mat-label>
+    <input matInput [(ngModel)]="atencion.idAtencion">
+  </mat-form-field> -->
+
+
+  <div class="content-inputs">
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Costo Atencion</mat-label>
+      <input matInput [(ngModel)]="atencion.costoAtencion" required>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Comentario de Entrega</mat-label>
+      <input matInput [(ngModel)]="atencion.detalleEntrega">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Comentario acerca del Pago</mat-label>
+      <input matInput [(ngModel)]="descripcion">
+    </mat-form-field>
+
+  </div>
+
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <mat-select [(ngModel)]="marca.estado" >
+      <mat-option [value]=0>Inactivo</mat-option>
+      <mat-option [value]=1>Activo</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+</div>
+<div mat-dialog-actions class="buttons">
+  <button mat-button color="accent" (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
+</div>

@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+mat-card{
+    width: auto;
+    padding: 10px;
+}
+
+mat-card-title{
+    font-size: 22px;
+    margin : 10px auto 20px 15px;
+}
+mat-form-field{
+    width: 400px;
+}
+
+mat-label{
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-column-item{
+    width: 10%;
+}
+.mat-column-producto{
+    width: 40%;
+}
+.mat-column-cantidad{
+    width: 10%;
+    text-align: center;
+}
+.mat-column-precio{
+    width: 10%;
+    text-align: center;
+}
+.mat-column-precioVenta{
+    width: 10%;
+    text-align: center;
+}
+.mat-column-total{
+    width: 10%;
+    text-align: center;
+}
+.mat-column-accion{
+    width: 10%;
+    text-align: center;
+}
+
+.mat-form-client{
+    width: 600px;
+}
+
+.mat-form-product{
+    width: 600px;
+}
+
+.button-add-product{
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+}
+
+.input-precio-venta{
+    text-align: center;
+}
+
+.totalGeneral{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 40px -20px;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+mat-card-actions{
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-card-footer{
+    float: right;
+}
+
+@media (max-width: 480px) {
+
+    table {
+        width: 100%;
+        padding: 5px;
+    }
+    
+    .mat-column-item{
+        display: none;
+    }
+    .mat-column-producto{
+        width: 50%;
+    }
+    .mat-column-cantidad{
+    
+        text-align: center;
+    }
+    .mat-column-precio{
+        display: none;
+    }
+    .mat-column-precioVenta{
+        text-align: center;
+    }
+    .mat-column-total{
+        text-align: center;
+    }
+    .mat-column-accion{
+
+        text-align: center;
+    }
+
+    .mat-form-field {
+        font-size: 14px;
+        width: 100%;
+    }
+
+}

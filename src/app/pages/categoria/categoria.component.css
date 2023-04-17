@@ -1,0 +1,27 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .add-button{
+    float: right;
+    margin: 10px;
+  }
+
+  .mat-column-item{
+    width: 25%;
+  }
+  .mat-column-categoria{
+    width: 25%;
+  }
+  .mat-column-estado{
+    width: 25%;
+  }
+  .mat-column-accion{
+    width: 25%;
+  }

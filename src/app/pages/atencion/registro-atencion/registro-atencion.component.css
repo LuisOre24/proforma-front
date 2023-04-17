@@ -1,0 +1,90 @@
+*{
+
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    
+
+}
+
+.content{
+    padding: 20px;
+}
+
+h2{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+mat-form-field{
+
+    height: 70px;
+    font-size: 13px;
+    
+}
+
+mat-label{
+    font-size: 12px;
+    
+}
+
+.button-verificar-documento{
+    margin-left: 15px;
+    height: 50px;
+    width: 120px;
+}
+
+
+.validar-documento{
+    display: flex;
+    
+}
+
+.datos-cliente{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mat-form-nombre {
+    width: 49%;
+}
+.mat-form-apellido{
+    width: 49%;
+}
+.mat-form-correo{
+    width: 50%;
+}
+.mat-form-direccion{
+    width: 100%;
+}
+
+.mat-form-detalle{
+    width: 80%;
+    height: 180px;
+}
+
+.content-buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    width: 100px;
+}
+
+.detalle-registro-pago{
+    display: flex;
+    
+}
+
+.detalle-pago{
+    display: block;
+    margin: 10px;
+}
+
+.check-pago{
+    display: flex;
+}
+
