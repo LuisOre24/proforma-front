@@ -67,7 +67,7 @@ export class RegistroAtencionComponent implements OnInit {
       this.clienteService.registrar(cliente).subscribe(() => { });
     }
     catch {
-      console.log("error cliente");
+      
     }
 
 
@@ -144,7 +144,7 @@ export class RegistroAtencionComponent implements OnInit {
             atencion.costoAtencion = 0;
             atencion.detallePago = this.detPago;
           }
-          console.log(atencion);
+          
           this.atencionService.register(atencion).subscribe(() => { });
 
         }
@@ -153,7 +153,6 @@ export class RegistroAtencionComponent implements OnInit {
           this.registrarCliente();
           this.clienteService.getCliente(this.formCliente.value.documentoCliente).subscribe(data => {
             let client = data;
-            console.log(data);
             let atention = new Atencion();
             atention.cliente = client;
             var fechaAtencionActual = moment().format('YYYY-MM-DDTHH:mm:ss.sss');
@@ -192,7 +191,7 @@ export class RegistroAtencionComponent implements OnInit {
 
     }
     catch (error) {
-      console.log(error);
+
     }
 
     this.dialogRef.close()

@@ -54,7 +54,6 @@ export class RegistroPagoComponent implements OnInit{
     detail.fechaDetPago = fechaAtencionActual;
     detail.descripcion = this.descripcion;
     this.atencion.detallePago.push(detail);
-    console.log(this.atencion);
 
     this.atencionService.update(this.atencion).subscribe( () => {});
     this.dialogRef.close();
