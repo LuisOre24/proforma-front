@@ -46,7 +46,7 @@ export class GuardInterceptor implements HttpInterceptor {
                     duration : 3000
                 });
             }
-            else if(error.status == 500){
+            else if (error.status == 500){
                 sessionStorage.clear();
                 this.router.navigate(['login']);
                 this.snack.open('ERROR EN EL SERVIDOR' + error.message, "ERROR", {
@@ -54,14 +54,14 @@ export class GuardInterceptor implements HttpInterceptor {
                 });
             }
             else{
-                sessionStorage.clear();
+                sessionStorage.clear() ;
                 this.router.navigate(['login']);
                 this.snack.open(error.message, "ERROR", {
                     duration : 5000
                 });
             }
             return EMPTY;
-        }));
+        }));    
     }
 
 }

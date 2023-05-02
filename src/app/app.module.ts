@@ -65,12 +65,12 @@ export function getToken() {
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,
-        allowedDomains: ['akja-app.herokuapp.com', 'localhost:8080'],
-        disallowedRoutes: ['https://akja-app.herokuapp.com/v1/auth/admin/authenticate','http://localhost:8080/v1/auth/admin/authenticate']
+        allowedDomains: ['http://134.209.117.9','localhost:8080'],
+        disallowedRoutes: ['http://134.209.117.9/sys-app/v1/auth/admin/authenticate','http://localhost:8080/v1/auth/admin/authenticate']
       },
     }),
   ],
-  providers: [
+  providers: [  
     /* LoginService,
     GuardGuard, */
     [

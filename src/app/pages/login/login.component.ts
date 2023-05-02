@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit {
   }
 
   clearFields(){
-    console.log("clear fields");
     this.password = "";
     this.form = new FormGroup({
       'usuario' : new FormControl('')

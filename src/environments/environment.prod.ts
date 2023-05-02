@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  HOST: 'https://akja-app.herokuapp.com/v1',
+  HOST: 'http://134.209.117.9/sys-app/v1',
   TOKEN_NAME: 'access_token',
 };

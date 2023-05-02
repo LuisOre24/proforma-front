@@ -55,7 +55,13 @@ export class RegistroPagoComponent implements OnInit{
     detail.descripcion = this.descripcion;
     this.atencion.detallePago.push(detail);
 
-    this.atencionService.update(this.atencion).subscribe( () => {});
+    this.atencionService.update(this.atencion).subscribe( () => {
+      this.atencionService.getAll().subscribe( data =>{
+        this.atencionService.refresh.next(data);
+      });
+
+
+    });
     this.dialogRef.close();
   }
 

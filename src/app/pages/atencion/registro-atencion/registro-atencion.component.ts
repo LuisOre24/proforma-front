@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Atencion } from 'src/app/_model/Atencion';
 import { Cliente } from 'src/app/_model/Cliente';
 import { ClienteService } from 'src/app/_service/cliente.service';
@@ -8,6 +8,8 @@ import { AtencionService } from 'src/app/_service/atencion.service';
 import { DetallePago } from 'src/app/_model/DetallePago';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
+import { tap } from 'rxjs';
+import { throws } from 'assert';
 
 
 @Component({
@@ -35,7 +37,9 @@ export class RegistroAtencionComponent implements OnInit {
 
   costoServicio: number = 0.00;
   // 
-  constructor(private clienteService: ClienteService, private atencionService: AtencionService, private snackBar: MatSnackBar, private dialogRef : MatDialogRef<RegistroAtencionComponent>) {
+  constructor(private clienteService: ClienteService,
+    private atencionService: AtencionService, 
+    private snackBar: MatSnackBar, private dialogRef: MatDialogRef<RegistroAtencionComponent>) {
 
   }
 
@@ -51,6 +55,9 @@ export class RegistroAtencionComponent implements OnInit {
       'detalleAtencion': new FormControl(''),
       'costoServicio': new FormControl('0')
     });
+
+    
+
   }
 
 
@@ -67,7 +74,7 @@ export class RegistroAtencionComponent implements OnInit {
       this.clienteService.registrar(cliente).subscribe(() => { });
     }
     catch {
-      
+
     }
 
 
@@ -77,7 +84,6 @@ export class RegistroAtencionComponent implements OnInit {
     let document: string = this.formCliente.value.documentoCliente;
 
     this.clienteService.getCliente(document).subscribe(data => {
-      if (data != null) {
         this.cliente = data;
         this.formCliente = new FormGroup({
           'documentoCliente': new FormControl(data.documento),
@@ -89,26 +95,110 @@ export class RegistroAtencionComponent implements OnInit {
           'detalleAtencion': new FormControl(''),
           'costoServicio': new FormControl(0.00)
         });
-      }
-      else {
-        this.snackBar.open(
-          "Cliente no registrado", "Aviso", {
-          horizontalPosition: 'center',
-          verticalPosition: 'top'
-        }
-        )
-      }
     });
   }
 
 
   registrarAtencion() {
 
-    try {
+   //inicio del bloque inicial
+     if(this.cliente){
+
+      try{
+        var fechaAtencionActual = moment().format('YYYY-MM-DDTHH:mm:ss.sss');
+          let atencion = new Atencion();
+          this.cliente.documento = this.formCliente.value.documentoCliente;
+          this.cliente.nombre = this.formCliente.value.nombreCliente;
+          this.cliente.apellido = this.formCliente.value.apellidoCliente;
+          this.cliente.telefono = this.formCliente.value.telefonoCliente;
+          this.cliente.correo = this.formCliente.value.emailCliente;
+          this.cliente.direccion = this.formCliente.value.direccionCliente;
+          atencion.cliente = this.cliente;
+          this.clienteService.update(this.cliente).subscribe(() => { });
+          atencion.detalleAtencion = this.formCliente.value.detalleAtencion;
+          atencion.costoAtencion = this.formCliente.value.costoServicio;
+          if (this.isChecked) {
+            let detail = new DetallePago();
+            detail.montoPago = this.formCliente.value.costoServicio;
+            detail.fechaDetPago = fechaAtencionActual;
+            this.detPago.push(detail);
+            atencion.estadoCancelacion = 1;
+            atencion.costoAtencion = this.formCliente.value.costoServicio;
+            atencion.detallePago = this.detPago;
+          }
+          else {
+
+            let detail = new DetallePago();
+            detail.montoPago = this.formCliente.value.costoServicio;
+            detail.fechaDetPago = fechaAtencionActual;
+            this.detPago.push(detail);
+            atencion.fechaAtencion = fechaAtencionActual;
+            atencion.estadoAtencion = 0;
+            atencion.estadoCancelacion = 0;
+            atencion.costoAtencion = 0;
+            atencion.detallePago = this.detPago;
+          }
+          
+          this.atencionService.register(atencion).subscribe(() => { 
+            this.atencionService.getAll().subscribe(data => {
+              this.atencionService.refresh.next(data);
+            });
+          });
+      }
+      catch(error){
+
+      }
+          
+    }
+    else{
+
+      this.registrarCliente();
+      this.clienteService.getCliente(this.formCliente.value.documentoCliente).subscribe(data => {
+        let client = data;
+        let atention = new Atencion();
+        atention.cliente = client;
+        var fechaAtencionActual = moment().format('YYYY-MM-DDTHH:mm:ss.sss');
+        atention.fechaAtencion = fechaAtencionActual;
+        atention.detalleAtencion = this.formCliente.value.detalleAtencion;
+        if (this.isChecked) {
+          let detail = new DetallePago();
+          detail.montoPago = this.formCliente.value.costoServicio;
+          detail.fechaDetPago = fechaAtencionActual;
+          this.detPago.push(detail);
+          atention.estadoAtencion = 0;
+          atention.estadoCancelacion = 1;
+          atention.costoAtencion = this.formCliente.value.costoServicio;
+          atention.detallePago = this.detPago;
+        }
+        else {
+
+          let detail = new DetallePago();
+          detail.montoPago = this.formCliente.value.costoServicio;
+          detail.fechaDetPago = fechaAtencionActual;
+          this.detPago.push(detail);
+          atention.fechaAtencion = fechaAtencionActual;
+          atention.estadoAtencion = 0;
+          atention.estadoCancelacion = 0;
+          atention.costoAtencion = 0;
+          atention.detallePago = this.detPago;
+        }
+        this.atencionService.register(atention).subscribe(() => {
+          this.atencionService.getAll().subscribe(data => {
+            this.atencionService.refresh.next(data);
+          });
+         });
+      });
+
+    }
+
+   //fin bloque oficial 
+
+  /*   try{
 
       this.clienteService.getCliente(this.formCliente.value.documentoCliente).subscribe(data => {
 
-        if (data != null || data != undefined) {
+        if (data) {
+          console.log(`${data}: data existente`)
           this.cliente = data;
           ///////
           var fechaAtencionActual = moment().format('YYYY-MM-DDTHH:mm:ss.sss');
@@ -149,7 +239,7 @@ export class RegistroAtencionComponent implements OnInit {
 
         }
         else {
-
+          console.log(`data inexistente -> ${data}`)
           this.registrarCliente();
           this.clienteService.getCliente(this.formCliente.value.documentoCliente).subscribe(data => {
             let client = data;
@@ -184,18 +274,16 @@ export class RegistroAtencionComponent implements OnInit {
           });
 
         }
-
+        console.log("nunca ingresó al bloque if");
       });
-
-
 
     }
     catch (error) {
 
     }
-
+ */
     this.dialogRef.close()
-   
+
   }
 
 
